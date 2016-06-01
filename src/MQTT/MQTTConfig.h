@@ -1,0 +1,9 @@
+#ifndef _MQTT_CONFIG_H_
+#define _MQTT_CONFIG_H_
+
+#define MQTT_VERSION_31
+#define MQTT_SECURITY 1 
+#define MQTT_KEEP_ALIVE 120
+#define MQTT_MAX_MESSAGE_LENGTH 1024
+
+#endif //_MQTT_CONFIG_H_
