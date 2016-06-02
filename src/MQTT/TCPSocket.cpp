@@ -19,7 +19,7 @@ void TCPSocket::Connect(std::string host, uint32_t port, std::function<void(bool
 			}
 			return;
 		}
-		char opt = 1;
+		int opt = 1;
 		if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (char*)&opt, sizeof(opt)) < 0)
 		{
 			LOGI("Set socket options error");

@@ -32,14 +32,14 @@ int main()
 	connectOptions.SetKeepAlive(MQTT_KEEP_ALIVE);
 	connectOptions.SetUsername("dinhhuy258");
 	connectOptions.SetPassword("123456");
-	MQTTClient mqttClient("127.0.0.1", 8883, "lens_z9sHPNtXbWVLPUOEqv7XUOL");
+	MQTTClient mqttClient("127.0.0.1", 8883, "MQTTClient");
 	mqttClient.MQTTOnReceivedPayload(MQTTOnReceived);
 	std::string command;
-	NetworkSecurityOptions::certificateAuthority = "C:\\Users\\Admin\\Desktop\\SSL\\mqtt_ca.crt";
 	NetworkSecurityOptions::enableServerCertificate = true;
-	NetworkSecurityOptions::clientCertificate = "C:\\Users\\Admin\\Desktop\\SSL\\mqtt_client.crt";
-	NetworkSecurityOptions::clientPrivateKey = "C:\\Users\\Admin\\Desktop\\SSL\\mqtt_client.key";
-	NetworkSecurityOptions::clientPrivateKeyPassword = "dinhhuy2";
+	NetworkSecurityOptions::certificateAuthority = "//home/dinhhuy258//Desktop//SSL//mqtt_ca.crt";
+	NetworkSecurityOptions::clientCertificate = "//home//dinhhuy258//Desktop//SSL//mqtt_client.crt";
+	NetworkSecurityOptions::clientPrivateKey = "//home//dinhhuy258//Desktop//SSL//mqtt_client.key";
+	NetworkSecurityOptions::clientPrivateKeyPassword = "123456";
 	while (true)
 	{
 		std::cin >> command;

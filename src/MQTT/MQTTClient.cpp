@@ -9,6 +9,10 @@ MQTTClient::MQTTClient(std::string host, uint32_t port, std::string clientID)
 	this->host = host;
 	this->port = port;
 	this->clientID = clientID;
+	mqttConnectedCallback = nullptr;
+	mqttDisconnectedCallback = nullptr;
+	mqttPublishedCallback = nullptr;
+	mqttDataCallback = nullptr;
 }
 
 MQTTClient::~MQTTClient()
