@@ -8,6 +8,7 @@ I wrote this client just for studying:
 ##Feature
 + Support subscribing, publishing, authentication, will messages, keep alive pings and all 3 QoS levels
 + Support security connection
+
 ##Building
 +  On Linux:
 - cd mqtt-client
@@ -19,8 +20,10 @@ I wrote this client just for studying:
 - Open visual studio
 - Link project to OpenSSL include and library
 - Build
+
 ##Usage
 - Edit some code on main.cpp as you want and run
+
 ##Limited
 - Don't support retransmit for QoS1 and QoS2
 
