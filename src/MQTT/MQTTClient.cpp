@@ -33,6 +33,10 @@ void MQTTClient::Connect(MQTTConnectOptions mqttConnectOptions, bool security)
 
 void MQTTClient::Publish(std::string topicName, std::string payload, uint8_t qos, bool retain)
 {
+	if (clientState != ClientState::CONNECT)
+	{
+		return;
+	}
 	bool dup = false;
 	std::unique_ptr<MQTTMessage> mqttMessage = MQTTMessage::MQTTMessagePublish(topicName, payload, dup, qos, retain);
 	network->WriteData(mqttMessage->GetMessageData(), mqttMessage->GetMessageLength());
@@ -40,12 +44,20 @@ void MQTTClient::Publish(std::string topicName, std::string payload, uint8_t qos
 
 void MQTTClient::Subscribe(std::string topicName, uint8_t qos)
 {
+	if (clientState != ClientState::CONNECT)
+	{
+		return;
+	}
 	std::unique_ptr<MQTTMessage> mqttMessage = MQTTMessage::MQTTMessageSubscribe(topicName, qos);
 	network->WriteData(mqttMessage->GetMessageData(), mqttMessage->GetMessageLength());
 }
 
 void MQTTClient::Unsubscribe(std::string topicName)
 {
+	if (clientState != ClientState::CONNECT)
+	{
+		return;
+	}
 	std::unique_ptr<MQTTMessage> mqttMessage = MQTTMessage::MQTTMessageUnsubscribe(topicName);
 	network->WriteData(mqttMessage->GetMessageData(), mqttMessage->GetMessageLength());
 } 

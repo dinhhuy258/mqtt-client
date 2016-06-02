@@ -16,8 +16,10 @@ void Network::Connect(std::string host, uint32_t port, bool security)
 	{
 		socket = make_unique<TCPSocket>();
 	}
-	socket->Initialize();
-	socket->Connect(host, port, std::bind(&Network::ConnectHandler, this, std::placeholders::_1));
+	if (socket->Initialize())
+	{	
+		socket->Connect(host, port, std::bind(&Network::ConnectHandler, this, std::placeholders::_1));
+	}
 }
 
 void Network::Disconnect()

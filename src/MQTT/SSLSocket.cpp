@@ -71,7 +71,7 @@ bool SSLSocket::Initialize()
 	{
 		if (SSL_CTX_use_certificate_file(sslContext, NetworkSecurityOptions::clientCertificate.c_str(), SSL_FILETYPE_PEM) != SSL_SUCCESS)
 		{
-			LOGI("SSL_CTX_use_certificate_chain_file error");
+			LOGI("SSL_CTX_use_certificate_file error");
 			LOGI("%s\n", ERR_error_string(ERR_get_error(), NULL));
 			SSL_CTX_free(sslContext);
 			sslContext = nullptr;
