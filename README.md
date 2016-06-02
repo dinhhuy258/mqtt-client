@@ -10,14 +10,14 @@ I wrote this client just for studying:
 + Support security connection
 
 ##Building
-### On Linux:
+##### On Linux:
 - cd mqtt-client
 - cd src
 - cd MQTT
 - make
 - make run
 
-### On windows:
+##### On windows:
 - Open visual studio
 - Link project to OpenSSL include and library folder
 - Build
@@ -28,5 +28,6 @@ I wrote this client just for studying:
 ##Limited
 - Don't support retransmit for QoS1 and QoS2
 
-Feel free to contribute to the project in any way you like!
-If you find out some bad code (code not clean). Please anounce to me because the purpose that I create this project just for studying.
+####Feel free to contribute to the project in any way you like!
+
+####If you find out some bad code (code not clean). Please anounce to me because the purpose that I create this project just for studying.
