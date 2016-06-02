@@ -16,6 +16,7 @@ I wrote this client just for studying:
 - cd MQTT
 - make
 - make run
+
 ### On windows:
 - Open visual studio
 - Link project to OpenSSL include and library folder
