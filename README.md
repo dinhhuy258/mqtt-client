@@ -10,19 +10,19 @@ I wrote this client just for studying:
 + Support security connection
 
 ##Building
-+  On Linux:
+### On Linux:
 - cd mqtt-client
 - cd src
 - cd MQTT
 - make
 - make run
-+ On windows:
+### On windows:
 - Open visual studio
-- Link project to OpenSSL include and library
+- Link project to OpenSSL include and library folder
 - Build
 
 ##Usage
-- Edit some code on main.cpp as you want and run
+- Edit some code on main.cpp as you want
 
 ##Limited
 - Don't support retransmit for QoS1 and QoS2
