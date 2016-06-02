@@ -1,4 +1,5 @@
 #include "Utils.h"
+#define __STDC_WANT_LIB_EXT1__ 1
 #include <string.h>
 
 void WriteShort(uint8_t **pptr, uint16_t data)

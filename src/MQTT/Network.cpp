@@ -149,7 +149,7 @@ void Network::ReadHandler(bool error, std::size_t bytesTransferred)
 	}
 	else
 	{		
-		LOGI("Read data error %d", bytesTransferred);
+		LOGI("Read data error %d", static_cast<int>(bytesTransferred));
 		Disconnect();
 	}
 }

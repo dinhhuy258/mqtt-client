@@ -1,7 +1,7 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
-#include <stdint.h>
 #include <string>
+#include <stdint.h>
 #include <memory>
 #define MQTT_DEBUG
 
@@ -9,8 +9,8 @@
 #define SOCKET_START do { WORD winsockVersion = 0x0202; /*version 2.2*/ WSADATA wsd; WSAStartup(winsockVersion, &wsd); }while(0);
 #define SOCKET_END do { WSACleanup(); }while(0);
 #else
-#define START
-#define END
+#define SOCKET_START
+#define SOCKET_END
 #endif
 
 #if defined(MQTT_DEBUG)

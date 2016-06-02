@@ -22,7 +22,11 @@ SSLSocket::~SSLSocket()
 
 static int PemPasswordCallback(char *buf, int size, int rwflag, void *password)
 {
+#if defined(WIN32) || defined(WIN64)
 	strncpy_s(buf, size, (char *)(password), size);
+#else
+	strncpy(buf, (char *)(password), size);
+#endif
 	buf[size - 1] = '\0';
 	return(static_cast<int>(strlen(buf)));
 }
@@ -154,7 +158,11 @@ void SSLSocket::Connect(std::string host, uint32_t port, std::function<void(bool
 		}
 		memset(&serverAddress, 0, sizeof(serverAddress));
 		serverAddress.sin_family = AF_INET;
+#if defined(WIN32) || defined(WIN64)
 		if (inet_pton(AF_INET, host.c_str(), &serverAddress.sin_addr.S_un.S_addr) <= 0)
+#else
+		if (inet_pton(AF_INET, host.c_str(), &serverAddress.sin_addr.s_addr) <= 0)
+#endif
 		{
 			LOGI("Invalid address");
 			if (connectedCallback)

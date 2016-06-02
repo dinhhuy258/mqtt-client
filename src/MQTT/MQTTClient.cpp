@@ -188,7 +188,7 @@ void MQTTClient::TCPReceivedCallback(uint8_t* data, std::size_t dataLength)
 
 void MQTTClient::TCPSentCallback(std::size_t bytesTransferred)
 {
-	LOGI("Sent %d bytes", bytesTransferred);
+	LOGI("Sent %d bytes", static_cast<int>(bytesTransferred));
 }
 
 void MQTTClient::TimerCallback()

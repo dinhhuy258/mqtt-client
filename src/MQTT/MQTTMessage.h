@@ -2,6 +2,7 @@
 #define _MQTT_MESSAGE_H_
 #include <stdint.h>
 #include <memory>
+#include <string.h>
 #include "MQTTConfig.h"
 #include "MQTTConnectOptions.h"
 
@@ -126,7 +127,11 @@ class MQTTMessage
 			topicLength <<= 8;
 			topicLength |= data[index++];
 			char topicNameArray[MQTT_MAX_MESSAGE_LENGTH];
+#if defined(WIN32) || defined(WIN64)
 			memcpy_s(topicNameArray, MQTT_MAX_MESSAGE_LENGTH, &data[index], topicLength);
+#else
+			memcpy(topicNameArray, &data[index], topicLength);
+#endif
 			std::string topicName(topicNameArray, topicLength);
 			return topicName;
 		}
@@ -148,7 +153,11 @@ class MQTTMessage
 			payloadLength <<= 8;
 			payloadLength |= data[index++];
 			char payloadArray[MQTT_MAX_MESSAGE_LENGTH];
+#if defined(WIN32) || defined(WIN64)
 			memcpy_s(payloadArray, MQTT_MAX_MESSAGE_LENGTH, &data[index], payloadLength);
+#else
+			memcpy(payloadArray, &data[index], payloadLength);
+#endif
 			std::string payload(payloadArray, payloadLength);	
 			return payload;
 		}

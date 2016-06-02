@@ -6,6 +6,12 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
+#else
+#define INVALID_SOCKET -1
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <fcntl.h>
 #endif
 #include <functional>
 
@@ -20,7 +26,7 @@ class Socket
 		virtual void ReadData(uint8_t *buffer, std::size_t bytes, std::function<void(bool, std::size_t)> receivedCallback) = 0;
 		virtual void Close();
 	protected:
-		bool Socket::SetSocketBlockingEnabled(bool blocking);
+		bool SetSocketBlockingEnabled(bool blocking);
 		int sockfd;
 };
 
